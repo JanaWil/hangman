@@ -24,9 +24,9 @@ print(data.gallows[len(wrong_guesses)]) # gallow with the index of the number of
 print(f"Your word: {partial_solution}")
 
 """
-while there are still guesses left, ask for input and give feedback
+while guesses left & word not fully guessed yet, ask for input and give feedback
 """
-while len(wrong_guesses) < len(data.gallows) - 1:
+while len(wrong_guesses) < len(data.gallows) - 1 and partial_solution != word:
     letter = input("Your guess: ").upper() # get letter as an input
     if letter in word:
         for i, x in enumerate(word):
@@ -37,3 +37,11 @@ while len(wrong_guesses) < len(data.gallows) - 1:
             wrong_guesses.append(letter)
     print(data.gallows[len(wrong_guesses)])
     print(f"Your word: {partial_solution}, Wrong guesses: {', '.join(wrong_guesses)}")
+
+"""
+give feedback whether the game was won or lost
+"""
+if word == partial_solution:
+    print("Congrats, you have won!")
+else:
+    print(f"Oh no, you have lost! The word was: {word}")
